@@ -1,44 +1,58 @@
-# Webcam Volume Control (Windows)
+# 🎚️ Hand-Based Sound Controller  
+### #Webcam Volume Control (Windows)
 
-This project uses a webcam, MediaPipe hand tracking, and PyCaw (Windows) to control the system master volume using a two-finger gesture.
+Control your **system’s master volume** using **hand gestures** — powered by **MediaPipe**, **OpenCV**, and **PyCaw** (for Windows).
 
-Features
-- Raise index + middle fingers (both up) to enable volume control.
-- Move the two fingers apart to increase volume; bring them closer/lower them to decrease volume.
-- Live webcam feed with indicators: connection line, center circle and a vertical volume bar.
+---
 
-Requirements
-- Windows (for system volume control via PyCaw). On other OSes the demo visuals work but system control will not.
-- Python 3.8+
+## 🚀 Features
+- ✌️ Raise **index + middle fingers** to enable volume control.  
+- 📈 Move fingers apart to **increase volume**, bring them closer/lower to **decrease volume**.  
+- 🎥 Real-time webcam feed with visual indicators:
+  - Connection line between fingers  
+  - Center circle  
+  - Vertical volume bar  
 
-Installation (Windows / local)
-1. Create and activate a virtual environment (recommended):
+---
 
-```powershell
-python -m venv venv; .\venv\Scripts\Activate.ps1
-```
+## 🖥️ Requirements
+- **Windows OS** (for PyCaw system volume control)
+- **Python 3.8+**
+> 💡 On macOS/Linux: demo visuals will work, but system volume control will not.
 
-2. Install dependencies:
+---
 
-```powershell
-pip install -r requirements.txt
-```
+## ⚙️ Installation (Windows / Local)
 
-Usage (local Windows)
+1. **Create and activate a virtual environment (recommended):**
+   ```powershell
+   python -m venv venv
+   .\venv\Scripts\Activate.ps1
+   ```
+
+2. **Install dependencies:**
+   ```powershell
+   pip install -r requirements.txt
+   ```
+
+---
+
+## ▶️ Usage (Local Windows)
 ```powershell
 python main.py
 # Or for demo-only (no system volume change):
 python main.py --no-audio
 ```
 
-Colab notes
-- Colab does not have access to your local system audio and cannot run PyCaw. You can still run a demo of hand tracking inside Colab by using a small JS widget to capture webcam frames, but the script cannot change your computer's master volume from Colab.
-- If you want a Colab demo, use the provided `colab-snippet` in this README to capture webcam frames and preview detections; set `--no-audio` for demo mode.
+---
 
-Colab webcam snippet (paste into a notebook cell):
+## 🧠 Colab Notes
+> ⚠️ Colab cannot access your local audio system (PyCaw).  
+> You can still run a **hand tracking demo** visually, but volume changes won’t affect your device.
 
+### 📸 Colab Webcam Snippet
 ```python
-# pip install mediapipe opencv-python
+# Install dependencies
 !pip install mediapipe opencv-python
 
 from IPython.display import display, Javascript
@@ -56,7 +70,6 @@ def take_photo(filename='photo.jpg', quality=0.8):
     div.appendChild(video);
     video.srcObject = stream;
     await video.play();
-    // Resize
     var canvas = document.createElement('canvas');
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
@@ -69,12 +82,26 @@ def take_photo(filename='photo.jpg', quality=0.8):
   """ % quality)
   display(js)
 
-# Note: running a continuous OpenCV real-time pipeline in Colab is flaky. Use this only for short demos.
+# ⚠️ Note:
+# Continuous real-time OpenCV pipelines may not work stably in Colab.
+# Use this snippet only for short gesture demos.
 ```
 
-Troubleshooting
-- If the webcam is black / not detected: try other camera indices (0, 1, ...), ensure no other app is using the camera.
-- If PyCaw import fails: ensure you installed `pycaw` and `comtypes` and running on Windows.
+---
 
-License
-MIT
+## 🛠️ Troubleshooting
+- 🕶️ **Webcam not detected / black screen:** Try using another camera index (0, 1, …) or ensure no other app is using your webcam.  
+- 🧩 **PyCaw import fails:** Make sure `pycaw` and `comtypes` are installed and that you’re on Windows.  
+
+---
+
+## 👤 Author & Credits
+**Project by:** [@tubakhxn](https://github.com/tubakhxn)  
+
+💡 Feel free to **fork** this repo, modify, and experiment — but please **don’t just copy and re-upload** it as your own.  
+Show support by giving the repo a ⭐ if it helped you!  
+
+---
+
+## 📄 License
+MIT License — you’re free to use, modify, and share responsibly with proper credit.
